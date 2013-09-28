@@ -26,7 +26,7 @@ if( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['parserhook']['Scribunto'] = array(
 	'path'           => __FILE__,
 	'name'           => 'Scribunto',
-	'author'         => array( 'Victor Vasiliev', 'Tim Starling' ),
+	'author'         => array( 'Victor Vasiliev', 'Tim Starling', 'C. Scott Ananian' ),
 	'descriptionmsg' => 'scribunto-desc',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:Scribunto',
 );
@@ -62,6 +62,7 @@ $wgHooks['ContentHandlerDefaultModelFor'][] = 'ScribuntoHooks::contentHandlerDef
 
 $wgHooks['UnitTestsList'][] = 'ScribuntoHooks::unitTestsList';
 $wgParserTestFiles[] = $dir . 'tests/engines/LuaCommon/luaParserTests.txt';
+$wgParserTestFiles[] = $dir . 'tests/engines/JsV8/jsParserTests.txt';
 
 $wgParserOutputHooks['ScribuntoError'] = 'ScribuntoHooks::parserOutputHook';
 $wgContentHandlers['Scribunto'] = 'ScribuntoContentHandler';
@@ -101,6 +102,7 @@ $wgAutoloadClasses['Scribunto_LuaInterpreter'] = $dir.'engines/LuaCommon/LuaInte
 $wgAutoloadClasses['Scribunto_LuaSandboxEngine'] = $dir.'engines/LuaSandbox/Engine.php';
 $wgAutoloadClasses['Scribunto_LuaStandaloneEngine'] = $dir.'engines/LuaStandalone/LuaStandaloneEngine.php';
 $wgAutoloadClasses['Scribunto_LuaStandaloneInterpreter'] = $dir.'engines/LuaStandalone/LuaStandaloneEngine.php';
+$wgAutoloadClasses['Scribunto_JsV8Engine'] = $dir.'engines/JsV8/Engine.php';
 
 /***** Individual libraries and their configurations *****/
 $wgAutoloadClasses['Scribunto_LuaLibraryBase'] = $dir.'engines/LuaCommon/LibraryBase.php';
@@ -153,6 +155,14 @@ $wgScribuntoEngineConf = array(
 		'memoryLimit' => 50 * 1024 * 1024,
 		'cpuLimit' => 7,
 		'allowEnvFuncs' => false,
+	),
+	'jsv8' => array(
+		'class' => 'Scribunto_JsV8Engine',
+		'memoryLimit' => 50 * 1024 * 1024,
+		'cpuLimit' => 7,
+
+		// The profiler sample period, or false to disable the profiler
+		'profilerPeriod' => 0.02,
 	),
 );
 
