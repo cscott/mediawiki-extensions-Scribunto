@@ -1,0 +1,66 @@
+!! article
+Module:Test
+!! text
+function hello() {
+  return "hello";
+}
+exports.hello = hello;
+
+exports.emptyObject = function() { return {}; };
+!! endarticle
+
+
+!! article
+Module:Test2
+!! text
+exports.countBeans = function() { return 3; };
+!! endarticle
+
+
+!! article
+Module:Parse error
+!! text
+{{{{
+!! endarticle
+
+!! article
+Template:Scribunto_all_args
+!! text
+{{#invoke:test|getParentArgs}}
+!! endarticle
+
+!! test
+Scribunto: no such module
+!! input
+{{#invoke:foo|bar}}
+!! result
+<p><strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Script error<!--Script error: No such module.--></span></strong>
+</p>
+!! end
+
+!! test
+Scribunto: no such function
+!! input
+{{#invoke:test|blah}}
+!! result
+<p><strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Script error<!--Script error: The function you specified did not exist.--></span></strong>
+</p>
+!! end
+
+!! test
+Scribunto: parse error
+!! input
+{{#invoke:Parse error|blah}}
+!! result
+<p><strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Script error<!--JavaScript error in Module:Parse_error at line 1: SyntaxError: Unexpected token ).--></span></strong>
+</p>
+!! end
+
+!! test
+Scribunto: hello world
+!! input
+{{#invoke:test|hello}}
+!! result
+<p>hello
+</p>
+!! end

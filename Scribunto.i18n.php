@@ -46,6 +46,8 @@ $1',
 	'scribunto-common-timeout' => 'The time allocated for running scripts has expired.',
 	'scribunto-common-oom' => 'The amount of memory allowed for running scripts has been exceeded.',
 	'scribunto-common-backtrace' => 'Backtrace:',
+	'scribunto-js-error-location' => 'JavaScript error $1: $2.',
+	'scribunto-js-error' => 'JavaScript error: $2.',
 	'scribunto-lua-in-function' => 'in function "$1"',
 	'scribunto-lua-in-main' => 'in main chunk',
 	'scribunto-lua-in-function-at' => 'in the function at $1:$2',
@@ -110,9 +112,9 @@ Page name for module documentation. Parameters:
 "Module exports" are the names that are exported. See the chapter [http://www.lua.org/pil/15.2.html Privacy] in the book "Programming in Lua".',
 	'scribunto-console-title' => 'Legend for the debug console fieldset',
 	'scribunto-console-too-large' => 'Error message displayed when the console history contains too much data.',
-	'scribunto-console-current-src' => 'Name of the fictional Lua module created in the debugging console.
+	'scribunto-console-current-src' => 'Name of the fictional module created in the debugging console.
 
-May appear e.g. in Lua error messages (like <code>$1</code> in {{msg-mw|Scribunto-module-line}})',
+May appear e.g. in error messages (like <code>$1</code> in {{msg-mw|Scribunto-module-line}})',
 	'scribunto-console-clear' => 'Used as button text which enables to clear the console.
 {{Identical|Clear}}',
 	'scribunto-console-cleared' => 'Message displayed in the console when the module source has been changed.',
